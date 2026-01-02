@@ -1,100 +1,88 @@
-'use client';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+"use client";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function BookingForm() {
-  const [activeTab, setActiveTab] = useState('book');
   const router = useRouter();
+  
+  
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+  const [date, setDate] = useState("");
+
+  const handleSearch = () => {
+    
+    router.push(`/search?from=${from}&to=${to}`);
+  };
 
   return (
-    <div className="w-full max-w-5xl bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl">
-
-
-      <div className="flex gap-6 mb-6 border-b border-white/10 pb-4">
-        {['Book Ticket', 'Check PNR', 'Train Status'].map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`text-sm font-bold uppercase tracking-wider pb-2 transition-all ${activeTab === tab
-                ? 'text-blue-400 border-b-2 border-blue-400'
-                : 'text-slate-400 hover:text-white'
-              }`}
-          >
-            {tab}
-          </button>
-        ))}
+    <div className="w-full max-w-4xl bg-black/40 backdrop-blur-md border border-white/10 rounded-3xl p-6 shadow-2xl animate-fade-up-delay">
+      
+      
+      <div className="flex gap-6 mb-6 text-sm font-semibold tracking-wide text-slate-400 border-b border-white/10 pb-4">
+        <button className="text-blue-400 border-b-2 border-blue-400 pb-4 -mb-4.5">BOOK TICKET</button>
+        <button className="hover:text-white transition-colors">CHECK PNR</button>
+        <button className="hover:text-white transition-colors">TRAIN STATUS</button>
       </div>
 
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
-
-
-        <div className="md:col-span-3">
-          <label className="block text-xs text-slate-400 mb-1 ml-1 uppercase font-bold">From</label>
-          <div className="relative group">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <span className="text-blue-500">📍</span>
-            </div>
-            <input
-              type="text"
-              placeholder="NDLS, New Delhi"
-              className="w-full bg-slate-900/50 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-3 transition-all group-hover:bg-slate-800"
-            />
-          </div>
-        </div>
-
-
-        <div className="hidden md:flex md:col-span-1 justify-center items-center pb-3">
-          <button className="p-2 rounded-full bg-slate-800 hover:bg-blue-600 transition-colors text-slate-400 hover:text-white">
-            ⇄
-          </button>
-        </div>
-
-
-        <div className="md:col-span-3">
-          <label className="block text-xs text-slate-400 mb-1 ml-1 uppercase font-bold">To</label>
-          <div className="relative group">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <span className="text-orange-500">🏁</span>
-            </div>
-            <input
-              type="text"
-              placeholder="BCT, Mumbai Central"
-              className="w-full bg-slate-900/50 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-3 transition-all group-hover:bg-slate-800"
-            />
-          </div>
-        </div>
-
-
-        <div className="md:col-span-2">
-          <label className="block text-xs text-slate-400 mb-1 ml-1 uppercase font-bold">Date</label>
-          <input
-            type="date"
-            className="w-full bg-slate-900/50 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-3 uppercase"
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        
+      
+        <div className="bg-black/50 border border-white/20 rounded-xl p-3 flex flex-col group focus-within:border-blue-500/50 transition-colors">
+          <label className="text-[10px] text-slate-500 font-bold tracking-wider mb-1 group-focus-within:text-blue-400">FROM</label>
+          <input 
+            type="text" 
+            value={from}
+            onChange={(e) => setFrom(e.target.value)}
+            placeholder="New Delhi" 
+            className="bg-transparent outline-none text-white font-medium placeholder-slate-600"
           />
         </div>
 
-
-        <div className="md:col-span-3">
-          <button onClick={() => router.push('/search')}
-            className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold py-3 px-6 rounded-lg shadow-lg shadow-blue-500/30 transition-all transform hover:scale-[1.02] active:scale-95">
-            SEARCH TRAINS ➜
-          </button>
+      
+        <div className="bg-black/50 border border-white/20 rounded-xl p-3 flex flex-col group focus-within:border-blue-500/50 transition-colors">
+          <label className="text-[10px] text-slate-500 font-bold tracking-wider mb-1 group-focus-within:text-blue-400">TO</label>
+          <input 
+            type="text" 
+            value={to}
+            onChange={(e) => setTo(e.target.value)}
+            placeholder="Mumbai Central" 
+            className="bg-transparent outline-none text-white font-medium placeholder-slate-600"
+          />
         </div>
+
+      
+        <div className="bg-black/50 border border-white/20 rounded-xl p-3 flex flex-col group focus-within:border-blue-500/50 transition-colors">
+          <label className="text-[10px] text-slate-500 font-bold tracking-wider mb-1 group-focus-within:text-blue-400">DATE</label>
+          <input 
+            type="date" 
+            className="bg-transparent outline-none text-white font-medium placeholder-slate-600 w-full [color-scheme:dark]" 
+          />
+        </div>
+
       </div>
 
+      
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="flex gap-4 text-xs text-slate-400 font-medium">
+          <label className="flex items-center gap-2 cursor-pointer hover:text-white">
+            <input type="checkbox" className="rounded border-white/30 bg-transparent text-blue-500 focus:ring-0" />
+            Flexible with Date?
+          </label>
+          <label className="flex items-center gap-2 cursor-pointer hover:text-white">
+            <input type="checkbox" className="rounded border-white/30 bg-transparent text-blue-500 focus:ring-0" />
+            Railway Pass Concession
+          </label>
+        </div>
 
-      <div className="mt-4 flex gap-4 text-xs text-slate-400">
-        <label className="flex items-center gap-2 cursor-pointer hover:text-white">
-          <input type="checkbox" className="rounded bg-slate-800 border-slate-700 text-blue-500 focus:ring-offset-0" />
-          <span>Flexible with Date?</span>
-        </label>
-        <label className="flex items-center gap-2 cursor-pointer hover:text-white">
-          <input type="checkbox" className="rounded bg-slate-800 border-slate-700 text-blue-500 focus:ring-offset-0" />
-          <span>Railway Pass Concession</span>
-        </label>
+        <button 
+          onClick={handleSearch}
+          className="w-full md:w-auto bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold py-3 px-8 rounded-xl shadow-lg shadow-blue-500/20 transition-all transform hover:scale-105 active:scale-95"
+        >
+          SEARCH TRAINS ➜
+        </button>
       </div>
-
     </div>
   );
 }
