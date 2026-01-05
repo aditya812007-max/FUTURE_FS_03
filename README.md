@@ -7,10 +7,6 @@ A modern, full-stack train reservation application built with **Next.js 15** and
 ## 🚀 Live Demo
 **[Click here to view the Live Site](https://irctcnext-eta.vercel.app/)** *(Note: If no trains appear, visit `/api/seed` to populate the demo database)*
 
-## 📸 Project Screenshots
-![Home Page](https://github.com/user-attachments/assets/placeholder-image-1)
-*(Replace this line with your actual screenshot link after uploading images to your repo)*
-
 ## ✨ Key Features
 * **Search Engine:** Query trains between stations (e.g., Delhi ➔ Mumbai).
 * **Dynamic Seat Selection:** Interactive 10x4 grid where users can visually pick specific seats.
