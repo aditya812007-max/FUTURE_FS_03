@@ -52,4 +52,14 @@ A modern, full-stack train reservation application built with **Next.js 15** and
     ```bash
     npm run dev
     ```
-    Open [http://localhost:3000](http://localhost
+    Open [http://localhost:3000](http://localhost) to view it in the browser.
+
+## 🚧 Challenges & Solutions
+* **Next.js 15 Build Errors:** Solved `useSearchParams` build failures by wrapping client components in `<Suspense>` boundaries.
+* **Database Whitelisting:** Configured MongoDB Network Access (`0.0.0.0/0`) to allow dynamic IP connections from Vercel's serverless edge network.
+* **State Management:** Managed complex seat selection states (arrays of seat IDs) and synced them with the backend seamlessly.
+
+## 🤝 Connect
+Built by **Aditya** as part of the Full Stack Development Challenge.
+* [LinkedIn](linkedin.com/in/aditya-biswal)
+* [GitHub](https://github.com/aditya812007-max/)
