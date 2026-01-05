@@ -1,33 +1,59 @@
-# 🚄 IRCTC Reimagined: The Future of Rail Travel
+# 🚄 IRCTC Next: Neural Train Booking System
 
-> **Task 3: Rebrand a Famous Brand’s Website Using AI**
-> *Future Interns Full Stack Web Development Internship*
+**Task 3 of my Internship at FUTURE INTERNS**
 
-## 🌟 Project Overview
-This project is a modern, AI-powered reimaging of the **IRCTC (Indian Railway Catering and Tourism Corporation)** booking platform. 
+A modern, full-stack train reservation application built with **Next.js 15** and **MongoDB**. This project redesigns the traditional booking experience with a futuristic UI, real-time database connections, and a dynamic seat selection system.
 
-The goal was to take one of the most high-traffic, complex utility sites in India and transform it into a seamless, futuristic user experience using **Next.js**, **Tailwind CSS**, and **Generative AI**.
+## 🚀 Live Demo
+**[Click here to view the Live Site](https://irctcnext-eta.vercel.app/)** *(Note: If no trains appear, visit `/api/seed` to populate the demo database)*
 
-## 🚀 Tech Stack
-- **Frontend:** Next.js 14 (App Router), React.js
-- **Styling:** Tailwind CSS, Framer Motion (Animations)
-- **AI Tools Used:** - **Adobe Firefly:** Generated the holographic train assets and logo concepts.
-  - **ChatGPT:** Generated the modern color palette and marketing copy.
-- **Backend (Planned):** Firebase (Auth & Database)
+## 📸 Project Screenshots
+![Home Page](https://github.com/user-attachments/assets/placeholder-image-1)
+*(Replace this line with your actual screenshot link after uploading images to your repo)*
 
 ## ✨ Key Features
-- **Futuristic UI:** A clean, "Glassmorphism" design that replaces the cluttered legacy interface.
-- **AI-Powered Route Suggestions:** (Concept) Smart recommendations based on travel history.
-- **Instant Seat Availability:** Visual representation of seat maps (replaces the text-heavy tables).
-- **Dark/Light Mode:** Seamless theme switching for night-time booking.
+* **Search Engine:** Query trains between stations (e.g., Delhi ➔ Mumbai).
+* **Dynamic Seat Selection:** Interactive 10x4 grid where users can visually pick specific seats.
+* **Real-time Booking:** Confirmed bookings are instantly saved to a **MongoDB Atlas** database.
+* **Inventory Management:** Booked seats are automatically removed from availability.
+* **Next.js 15 Architecture:** Utilizes the latest App Router, Server Actions, and Suspense boundaries for optimized performance.
 
-## 🎨 Design Decisions (AI-Assisted)
-- **Primary Color:** `#2563eb` (Electric Blue) - Represents trust and technology.
-- **Accent Color:** `#f97316` (Sunset Orange) - A nod to the original Indian Railways branding but modernized.
-- **Typography:** `Inter` & `Rajdhani` (for that high-tech transport feel).
+## 🛠️ Tech Stack
+* **Frontend:** Next.js 15 (React), Tailwind CSS, Framer Motion (animations).
+* **Backend:** Next.js API Routes (Serverless functions).
+* **Database:** MongoDB Atlas (Cloud) + Mongoose ODM.
+* **Deployment:** Vercel.
 
-## 🛠️ Installation & Setup
+## ⚙️ How It Works (Under the Hood)
+1.  **Search:** Uses URL Search Params to fetch matching trains from the database. Wrapped in `React.Suspense` to handle client-side rendering requirements of Next.js 15.
+2.  **Booking:** A transaction-safe API route receives the `trainId` and `seatNumbers`. It updates the specific document in the `trains` collection.
+3.  **Database Connection:** Uses a cached connection pattern to prevent connection limits in a serverless environment.
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/YOUR_GITHUB_USERNAME/FUTURE_FS_03.git](https://github.com/YOUR_GITHUB_USERNAME/FUTURE_FS_03.git)
+## 🔧 Local Installation Guide
+
+1.  **Clone the Repository**
+    ```bash
+    git clone [https://github.com/your-username/FUTURE_FS_03.git](https://github.com/your-username/FUTURE_FS_03.git)
+    cd FUTURE_FS_03
+    ```
+
+2.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Set Up Environment Variables**
+    Create a file named `.env.local` in the root directory and add your MongoDB connection string:
+    ```env
+    MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/irctc_db
+    ```
+
+4.  **Seed the Database (First Run Only)**
+    To add dummy trains to your empty database, run the development server and visit:
+    `http://localhost:3000/api/seed`
+
+5.  **Run the App**
+    ```bash
+    npm run dev
+    ```
+    Open [http://localhost:3000](http://localhost
